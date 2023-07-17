@@ -1,6 +1,9 @@
 import math
+import numpy as np
+import scipy.stats as stats
 import tkinter as tk
 from tkinter import messagebox
+import matplotlib.pyplot as plt
 
 class Calculator:
     def __init__(self, master):
@@ -18,7 +21,9 @@ class Calculator:
             '4', '5', '6', '-', 'cos',
             '1', '2', '3', '*', 'tan',
             '0', '.', '=', '/', 'sqrt',
-            '(', ')', 'C', 'exp', 'log10'  # Added log10 functionality
+            '(', ')', 'C', 'exp', 'log10',  # Added log10 functionality
+            'mean', 'median', 'stddev', 'dot', 'cross',  # Added more complex mathematical functions
+            'Plot'  # Added plot function
         ]
 
         row_val = 1
@@ -52,7 +57,21 @@ class Calculator:
     def click(self, button):
         if button == "=":
             try:
-                result = eval(self.entry.get(), {"__builtins__": None}, {"math": math, "sqrt": math.sqrt, "sin": math.sin, "cos": math.cos, "tan": math.tan, "log10": math.log10, "exp": math.exp, "pi": math.pi})
+                result = eval(self.entry.get(), {"__builtins__": None}, {
+                    "math": math, 
+                    "sqrt": math.sqrt, 
+                    "sin": math.sin, 
+                    "cos": math.cos, 
+                    "tan": math.tan, 
+                    "log10": math.log10, 
+                    "exp": math.exp, 
+                    "pi": math.pi, 
+                    "mean": np.mean, 
+                    "median": np.median, 
+                    "stddev": np.std, 
+                    "dot": np.dot, 
+                    "cross": np.cross
+                })
                 self.entry.delete(0, 'end')
                 self.entry.insert('end', str(result))
 
@@ -64,11 +83,19 @@ class Calculator:
                 messagebox.showerror("錯誤", str(e))
         elif button == "C":
             self.entry.delete(0, 'end')
+        elif button == "Plot":
+            try:
+                x = np.linspace(-10, 10, 400)
+                y = eval(self.entry.get(), {"__builtins__": None}, {"x": x, "math": math, "sqrt": math.sqrt, "sin": math.sin, "cos": math.cos, "tan": math.tan, "log10": math.log10, "exp": math.exp, "pi": math.pi})
+                plt.plot(x, y)
+                plt.show()
+            except Exception as e:
+                messagebox.showerror("錯誤", str(e))
         else:
             self.entry.insert('end', button)
 
     def show_help(self):
-        messagebox.showinfo("Help", "This is a scientific calculator.\nYou can perform mathematical operations like addition, subtraction, etc.")
+        messagebox.showinfo("Help", "This is a scientific calculator.\nYou can perform mathematical operations like addition, subtraction, etc.\nIt also supports more complex mathematical operations like mean, median, standard deviation, dot product, and cross product.\nYou can also plot functions by entering the function and clicking the 'Plot' button.")
 
     def enter_key(self, event):
         self.click("=")

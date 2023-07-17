@@ -11,7 +11,7 @@ class Calculator:
         master.title("科學計算機")
 
         # 設定視窗的大小
-        master.geometry("300x500")  # Adjust window size to accommodate history
+        master.geometry("300x600")  # Adjust window size to accommodate history
 
         self.entry = tk.Entry(master, font=('arial', 20, 'bold'), bd=15, insertwidth=4, width=14, justify='right')
         self.entry.grid(row=0, column=0, columnspan=4)
@@ -22,8 +22,8 @@ class Calculator:
             '1', '2', '3', '*', 'tan',
             '0', '.', '=', '/', 'sqrt',
             '(', ')', 'C', 'exp', 'log10',  # Added log10 functionality
-            'mean', 'median', 'stddev', 'dot', 'cross',  # Added more complex mathematical functions
-            'Plot'  # Added plot function
+            'Plot',  # Added plot function
+            'mean', 'median', 'stddev', 'dot', 'cross'  # Added more complex mathematical functions
         ]
 
         row_val = 1
@@ -38,7 +38,7 @@ class Calculator:
 
         # Create history area
         self.history = tk.Text(master, state='disabled', height=5, width=20)
-        self.history.grid(row=6, column=0, columnspan=5)
+        self.history.grid(row=7, column=0, columnspan=5)  # Adjust row position due to additional button rows
 
         # Create help menu
         menu = tk.Menu(master)

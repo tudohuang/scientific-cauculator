@@ -7,8 +7,11 @@ Welcome to our scientific calculator! This is a handy tool developed in Python t
 Our scientific calculator can perform the following functions:
 
 1️⃣ Basic Arithmetic: Addition, Subtraction, Multiplication, Division.
+
 2️⃣ Trigonometric Functions: Sine (sin(x)), Cosine (cos(x)), Tangent (tan(x)).
+
 3️⃣ Logarithmic Function: Logarithm (log(x)).
+
 4️⃣ And much more!
 
 ## 🚀 How to Use 🚀
@@ -16,7 +19,9 @@ Our scientific calculator can perform the following functions:
 To use our scientific calculator, follow the steps below:
 
 1️⃣ Download and install Python (if it's not already installed on your computer).
+
 2️⃣ Run the scientific calculator program in your Python environment.
+
 3️⃣ Enter the mathematical operation you want to perform and press enter.
 
 ## 📚 Learning and Understanding 📚
